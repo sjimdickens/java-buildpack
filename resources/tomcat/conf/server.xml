@@ -20,6 +20,11 @@
 
     <Service name='Catalina'>
         <Connector port='${http.port}' bindOnInit="false" connectionTimeout="20000"/>
+        
+        <Connector port="443" protocol="HTTP/1.1" SSLEnabled="true"
+   			 maxThreads="150" scheme="https" secure="true"
+  			 clientAuth="false" sslProtocol="TLS"
+   			 keystoreFile="serverStoreGCM.p12" keystorePass="123456" keystoreType="PKCS12"/>
 
         <Engine defaultHost='localhost' name='Catalina'>
             <Valve className="org.apache.catalina.valves.RemoteIpValve" protocolHeader="x-forwarded-proto"/>
